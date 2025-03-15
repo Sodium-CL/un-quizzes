@@ -25,7 +25,7 @@
         {props.imageCaption}
       </figcaption>
     </figure>
-    <a href="/" class="mx-8">
+    <a href="#{props.unquizzesId}" class="mx-8">
       <Next width="10em" height="10em" fill="#f4e7d9" />
     </a>
   </div>

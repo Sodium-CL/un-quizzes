@@ -1,32 +1,50 @@
 <script>
   let props = $props();
-  import Next from "./svg/next.svelte";
 </script>
 
-<div class="h-[100vh] bg-uq-purple mx-auto flex items-center justify-center">
-  <div class="flex items-center justify-end px-12">
-    <div class="mt-6 text-xl/8 text-gray-700">
-      <span class="font-semibold text-uq-white uppercase tracking-widest"
-        >{props.name}</span
-      ><br /><br />
-      <span class="font-abhaya-libre text-uq-white text-7xl">
-        {props.brief}</span
-      >
-    </div>
+<div
+  class="h-[100vh] bg-uq-purple grid grid-rows-5 grid-columns-5 justify-items-center items-center"
+>
+  <div
+    class="col-span-5 font-semibold text-uq-white uppercase tracking-widest text-xl/8"
+  >
+    {props.title}
   </div>
-  <div class="flex items-center justify-between p-12">
-    <figure class="w-1/2">
-      <img
-        class="rounded-3xl w-full h-auto"
-        src={props.imageURL}
-        alt="Event Logo"
-      />
-      <figcaption class="text-sm font-light italic text-uq-white w-full m-2">
-        {props.imageCaption}
-      </figcaption>
-    </figure>
-    <a href="/" class="mx-8">
-      <Next width="10em" height="10em" fill="#f4e7d9" />
-    </a>
+  <div class="row-span-2 row-start-2 p-20">
+    <img
+      class="rounded-xl w-auto h-full"
+      src={props.imageURLs[0]}
+      alt="Event Logo"
+    />
+  </div>
+  <div class="column-span-3 row-span-4 row-start-2 text-uq-white">
+    {#each props.description as description}
+      <p>
+        {#each description as textblock}
+          <span>{textblock.text}</span>
+        {/each}
+      </p>
+    {/each}
+  </div>
+  <div class="row-span-2 row-start-2 column-start-5 p-20">
+    <img
+      class="rounded-xl w-auto h-full"
+      src={props.imageURLs[1]}
+      alt="Event Logo"
+    />
+  </div>
+  <div class="row-span-2 row-start-4 p-20">
+    <img
+      class="rounded-xl w-auto h-full"
+      src={props.imageURLs[2]}
+      alt="Event Logo"
+    />
+  </div>
+  <div class="row-span-2 row-start-4 column-start-5 p-20">
+    <img
+      class="rounded-xl w-auto h-full"
+      src={props.imageURLs[3]}
+      alt="Event Logo"
+    />
   </div>
 </div>
