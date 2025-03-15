@@ -10,9 +10,9 @@
   >
     {props.title}
   </div>
-  <div class="row-span-2 row-start-2 p-20">
+  <div class="row-span-2 row-start-2 m-20 p-20">
     <img
-      class="rounded-xl w-auto h-full"
+      class="rounded-xl w-auto h-auto"
       src={props.imageURLs[0]}
       alt="Event Logo"
     />
@@ -26,23 +26,23 @@
       </p>
     {/each}
   </div>
-  <div class="row-span-2 row-start-2 column-start-5 p-20">
+  <div class="row-span-2 row-start-2 column-start-5 m-20 p-20">
     <img
-      class="rounded-xl w-auto h-full"
+      class="rounded-xl w-auto h-auto"
       src={props.imageURLs[1]}
       alt="Event Logo"
     />
   </div>
-  <div class="row-span-2 row-start-4 p-20">
+  <div class="row-span-2 row-start-4 m-20 p-20">
     <img
-      class="rounded-xl w-auto h-full"
+      class="rounded-xl w-auto h-auto"
       src={props.imageURLs[2]}
       alt="Event Logo"
     />
   </div>
-  <div class="row-span-2 row-start-4 column-start-5 p-20">
+  <div class="row-span-2 row-start-4 column-start-5 m-20 p-20">
     <img
-      class="rounded-xl w-auto h-full"
+      class="rounded-xl w-auto h-auto"
       src={props.imageURLs[3]}
       alt="Event Logo"
     />
