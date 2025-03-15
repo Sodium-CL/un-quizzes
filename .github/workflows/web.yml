@@ -12,9 +12,8 @@ on:
 
 jobs:
   build:
-    name: "Build"
+    name: "Build - UI"
     runs-on: ubuntu-latest
-    if: github.ref != 'refs/heads/main' && github.event_name != 'pull_request' && github.event.action != 'closed'
     steps:
       - uses: actions/checkout@v4
 
@@ -23,47 +22,49 @@ jobs:
         with:
           node-version: "22"
 
-      - name: Build Project
-        run: |
-          npm install
-          npm run build
+      - name: Install NPM dependencies
+        run: npm install
         working-directory: web
 
-  build_and_deploy_job:
-    if: github.ref == 'refs/heads/main' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+      - name: Build UI
+        run: npm run build
+        working-directory: web
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: |
+            web/build
+
+  deploy:
+    name: "Deploy UI"
     runs-on: ubuntu-latest
-    name: Build and Deploy Job
-    permissions:
-      id-token: write
-      contents: read
+    needs: build
+    if: github.ref == 'refs/heads/main'
     steps:
-      - uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          submodules: true
-          lfs: false
-      - name: Install OIDC Client from Core Package
-        run: npm install @actions/core@1.6.0 @actions/http-client
-      - name: Get Id Token
-        uses: actions/github-script@v6
-        id: idtoken
+          node-version: "22"
+
+      - name: Download artifact
+        uses: actions/download-artifact@v4
         with:
-          script: |
-            const coredemo = require('@actions/core')
-            return await coredemo.getIDToken()
-          result-encoding: string
-      - name: Build And Deploy
-        id: builddeploy
-        uses: Azure/static-web-apps-deploy@v1
-        with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
-          action: "upload"
-          ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
-          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "web/" # App source code path
-          api_location: "web/build/server" # Api source code path - optional
-          output_location: "build/static" # Built app content directory - optional
-          github_id_token: ${{ steps.idtoken.outputs.result }}
-          ###### End of Repository/Build Configurations ######
+          name: dist
+
+      - name: Install Az SWA CLI
+        run: npm install -g @azure/static-web-apps-cli
+
+      - name: Deploy UI
+        run: |
+          swa deploy static \
+          --api-location server \
+          --env production \
+          --api-language "node" \
+          --api-version "22" \
+          --deployment-token ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }} \
+          -name un-quizzes
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
