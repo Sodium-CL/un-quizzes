@@ -1,3 +1,4 @@
+import { building } from "$app/environment";
 import { data } from "$lib/server/sanityData.js";
 const queryPerson = `
   *[_type == "person"]{
@@ -17,8 +18,12 @@ const queryUqHero = `
   `;
 
 export async function load({ params }) {
-  const people = await data(queryPerson);
-  const uqHero = await data(queryUqHero);
+  var people = [];
+  var uqHero = [];
+  if (!building) {
+    people = await data(queryPerson);
+    uqHero = await data(queryUqHero);
+  }
   return {
     body: {
       people,

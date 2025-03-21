@@ -1,17 +1,12 @@
-import {
-  PROJECT_ID,
-  DATASET,
-  API_VERSION,
-  SANITY_READ_TOKEN,
-} from "$env/static/private";
+import { env } from "$env/dynamic/private";
 import { createClient } from "@sanity/client";
 export const data = (query) => {
   const client = createClient({
-    projectId: PROJECT_ID,
-    dataset: DATASET,
+    projectId: env.PROJECT_ID,
+    dataset: env.DATASET,
     useCdn: true, // set to `false` to bypass the edge cache
-    apiVersion: API_VERSION,
-    token: SANITY_READ_TOKEN,
+    apiVersion: env.API_VERSION,
+    token: env.SANITY_READ_TOKEN,
   });
   return client.fetch(query);
 };
