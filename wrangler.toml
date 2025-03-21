@@ -1,2 +1,8 @@
+name = "un-quizzes"
 compatibility_flags = [ "nodejs_compat" ]
 compatibility_date = "2025-03-21"
+pages_build_output_dir = ".svelte-kit/cloudflare"
+[vars]
+DATASET = "development"
+API_VERSION = "2025-03-21"
+NODE_VERSION = "22.14.0"
