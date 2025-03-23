@@ -1,6 +1,7 @@
 <script>
     let props = $props();
     import Next from "./svg/next.svelte";
+    import HeroImage from "$lib/assets/images/hero/1.png?enhanced";
 </script>
 
 <div class="h-[100vh] bg-uq-purple mx-auto flex items-center justify-center">
@@ -18,7 +19,7 @@
         <figure class="w-1/2">
             <enhanced:img
                 class="rounded-3xl w-full h-auto"
-                src="../lib/assets/images/hero/1.png"
+                src={HeroImage}
                 alt="Event Logo"
             />
             <figcaption

@@ -1,5 +1,9 @@
 <script>
     let props = $props();
+    import UnQHero1 from "$lib/assets/images/un-q-hero/1.png?enhanced";
+    import UnQHero2 from "$lib/assets/images/un-q-hero/2.png?enhanced";
+    import UnQHero3 from "$lib/assets/images/un-q-hero/3.png?enhanced";
+    import UnQHero4 from "$lib/assets/images/un-q-hero/4.png?enhanced";
 </script>
 
 <div
@@ -13,7 +17,7 @@
     <div class="row-span-2 row-start-2 m-20 p-20">
         <enhanced:img
             class="rounded-xl w-auto h-auto"
-            src="../lib/assets/images/un-q-hero/1.png"
+            src={UnQHero1}
             alt="Event Logo"
         />
     </div>
@@ -30,21 +34,21 @@
     <div class="row-span-2 row-start-2 column-start-5 m-20 p-20">
         <enhanced:img
             class="rounded-xl w-auto h-auto"
-            src="../lib/assets/images/un-q-hero/2.png"
+            src={UnQHero2}
             alt="Event Logo"
         />
     </div>
     <div class="row-span-2 row-start-4 m-20 p-20">
         <enhanced:img
             class="rounded-xl w-auto h-auto"
-            src="../lib/assets/images/un-q-hero/3.png"
+            src={UnQHero3}
             alt="Event Logo"
         />
     </div>
     <div class="row-span-2 row-start-4 column-start-5 m-20 p-20">
         <enhanced:img
             class="rounded-xl w-auto h-auto"
-            src="../lib/assets/images/un-q-hero/4.png"
+            src={UnQHero4}
             alt="Event Logo"
         />
     </div>
