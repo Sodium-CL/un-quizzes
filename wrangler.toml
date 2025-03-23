@@ -1,0 +1,2 @@
+name = 'un-quizzes'
+pages_build_output_dir = '.svelte-kit/cloudflare'
