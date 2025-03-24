@@ -1,6 +1,6 @@
 <script>
-    import Hero from "$lib/components/hero.svelte";
-    import UnQHero from "$lib/components/un-q-hero.svelte";
+    import Hero from "$components/hero.svelte";
+    import UnQHero from "$components/un-q-hero.svelte";
     let { data } = $props();
     const unquizzesId = "unquizzes-hero";
 </script>

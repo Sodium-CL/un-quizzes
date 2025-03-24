@@ -1,9 +1,9 @@
 <script>
     let props = $props();
-    import UnQHero1 from "$lib/assets/images/un-q-hero/1.png?enhanced";
-    import UnQHero2 from "$lib/assets/images/un-q-hero/2.png?enhanced";
-    import UnQHero3 from "$lib/assets/images/un-q-hero/3.png?enhanced";
-    import UnQHero4 from "$lib/assets/images/un-q-hero/4.png?enhanced";
+    import UnQHero1 from "$assets/images/un-q-hero/1.png?enhanced";
+    import UnQHero2 from "$assets/images/un-q-hero/2.png?enhanced";
+    import UnQHero3 from "$assets/images/un-q-hero/3.png?enhanced";
+    import UnQHero4 from "$assets/images/un-q-hero/4.png?enhanced";
 </script>
 
 <div

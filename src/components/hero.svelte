@@ -1,7 +1,7 @@
 <script>
     let props = $props();
-    import Next from "./svg/next.svelte";
-    import HeroImage from "$lib/assets/images/hero/1.png?enhanced";
+    import Next from "$components/svg/next.svelte";
+    import HeroImage from "$assets/images/hero/1.png?enhanced";
 </script>
 
 <div class="h-[100vh] bg-uq-purple mx-auto flex items-center justify-center">
